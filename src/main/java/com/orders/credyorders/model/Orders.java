@@ -1,6 +1,8 @@
 package com.orders.credyorders.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "custCode", nullable = false)
+    @JsonIgnoreProperties({"orders"})
     private Customers customer;
 
 
@@ -55,7 +58,7 @@ public class Orders {
         this.advanceAmount = advanceAmount;
     }
 
-    public Customers getCustomer() {
+    public  Customers getCustomer() {
         return customer;
     }
 
